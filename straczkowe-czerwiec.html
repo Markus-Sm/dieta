@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#1a3a2a">
+<meta name="description" content="Przepisy strączkowe na redukcję - czerwiec, Wrocław. Dużo białka, mało węgli, dania do pracy i na świeżo. Wszystkie składniki z Biedronki, Kauflandu lub Hali Targowej.">
+<title>Strączkowe na redukcję - Czerwiec Wrocław</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --warm-white: #faf7f2;
+    --deep-green: #1a3a2a;
+    --mid-green: #2d5a3d;
+    --sage: #7a9e7e;
+    --moss: #5c7a5c;
+    --amber: #c8853a;
+    --sand: #d4b896;
+    --ink: #1c2419;
+    --work-blue: #2a3a5a;
+    --work-light: #e8ecf5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
+
+  .hero { background: var(--deep-green); padding: 60px 40px 50px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(124,158,126,0.2) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(200,133,58,0.1) 0%, transparent 50%);
+  }
+  .hero-inner { max-width: 820px; margin: 0 auto; position: relative; }
+  .season-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: var(--sand); font-size: 11px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 24px;
+  }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 6vw, 56px); color: var(--warm-white); line-height: 1.1; margin-bottom: 16px; }
+  .hero h1 em { color: var(--sage); font-style: italic; }
+  .hero-sub { color: var(--sand); font-size: 15px; font-weight: 300; line-height: 1.6; max-width: 520px; }
+
+  .sources-bar { background: var(--mid-green); padding: 18px 40px; }
+  .sources-inner { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .sources-label { color: var(--sage); font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; }
+  .source-pill { background: rgba(255,255,255,0.1); color: var(--cream); font-size: 12px; padding: 4px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); }
+
+  .main { max-width: 820px; margin: 0 auto; padding: 50px 40px 80px; }
+
+  .recipe {
+    background: var(--warm-white); border-radius: 16px; margin-bottom: 32px;
+    overflow: hidden; border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .recipe:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+  /* Work-day recipe variant */
+  .recipe.work { border-left: 4px solid var(--work-blue); }
+
+  .recipe-header {
+    padding: 28px 32px 20px; display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px; border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .recipe-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .tag { font-size: 10px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; padding: 3px 10px; border-radius: 8px; }
+  .tag-legume { background: #e8f0e9; color: var(--moss); }
+  .tag-time { background: #fdf3e8; color: var(--amber); }
+  .tag-vibe { background: #f0ece5; color: #7a6a55; }
+  .tag-work { background: var(--work-light); color: var(--work-blue); }
+
+  .recipe-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--deep-green); line-height: 1.2; }
+  .recipe-desc { font-size: 13px; color: #666; font-weight: 300; line-height: 1.5; margin-top: 6px; }
+
+  .macro-box {
+    display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;
+    background: var(--deep-green); border-radius: 10px; padding: 12px 16px;
+    min-width: 100px; text-align: center;
+  }
+  .macro-kcal { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--sand); line-height: 1; }
+  .macro-kcal span { font-size: 11px; color: var(--sage); display: block; }
+  .macro-row { display: flex; gap: 8px; justify-content: center; }
+  .macro-item { font-size: 10px; color: rgba(245,240,232,0.7); text-align: center; }
+  .macro-item strong { display: block; font-size: 13px; color: var(--warm-white); font-weight: 500; }
+
+  .recipe-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .ingredients-col, .steps-col { padding: 24px 32px; }
+  .ingredients-col { border-right: 1px solid rgba(0,0,0,0.06); }
+
+  .col-title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sage); margin-bottom: 14px; }
+
+  .ing-list { list-style: none; }
+  .ing-list li {
+    font-size: 13px; color: var(--ink); padding: 5px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.07);
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 8px; font-weight: 400; line-height: 1.3;
+  }
+  .ing-list li:last-child { border-bottom: none; }
+  .ing-amount { font-size: 11px; color: var(--amber); font-weight: 500; white-space: nowrap; }
+
+  .steps-list { list-style: none; counter-reset: steps; }
+  .steps-list li {
+    counter-increment: steps; font-size: 13px; color: #444;
+    padding: 6px 0 6px 28px; position: relative; line-height: 1.5;
+    font-weight: 300; border-bottom: 1px dashed rgba(0,0,0,0.07);
+  }
+  .steps-list li:last-child { border-bottom: none; }
+  .steps-list li::before {
+    content: counter(steps); position: absolute; left: 0; top: 8px;
+    width: 18px; height: 18px; background: var(--deep-green); color: white;
+    border-radius: 50%; font-size: 9px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .recipe-footer {
+    padding: 14px 32px; background: #f7f4ef; border-top: 1px solid rgba(0,0,0,0.06);
+    display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+  }
+  .tip { font-size: 12px; color: #666; font-weight: 300; font-style: italic; flex: 1; }
+  .tip strong { font-weight: 500; color: var(--amber); font-style: normal; }
+  .buy-hint { font-size: 11px; color: var(--moss); background: #e8f0e9; padding: 4px 12px; border-radius: 8px; font-weight: 500; white-space: nowrap; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 400;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--sage);
+    margin: 40px 0 20px; display: flex; align-items: center; gap: 16px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.1); }
+  .section-title.work-section { color: var(--work-blue); }
+  .section-title.work-section::after { background: var(--work-blue); opacity: 0.2; }
+
+  .section-intro {
+    font-size: 13px; color: #666; font-weight: 300; margin: -10px 0 20px;
+    padding: 12px 16px; background: var(--work-light); border-radius: 10px;
+    border-left: 3px solid var(--work-blue);
+  }
+
+  .notes-box { background: var(--deep-green); color: var(--cream); border-radius: 16px; padding: 28px 32px; margin-top: 16px; }
+  .notes-box h2 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 16px; color: var(--sand); font-weight: 700; }
+  .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .note-item { font-size: 12px; font-weight: 300; line-height: 1.6; color: rgba(245,240,232,0.8); }
+  .note-item strong { display: block; font-weight: 500; color: var(--sage); margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+
+  @media (max-width: 620px) {
+    .hero, .sources-bar, .main { padding-left: 20px; padding-right: 20px; }
+    .recipe-body { grid-template-columns: 1fr; }
+    .ingredients-col { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .notes-grid { grid-template-columns: 1fr; }
+    .recipe-header { flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .recipe:hover { transform: none; }
+  }
+
+  /* ---- Wydruk: oszczędny na tusz (zero teł, same kontury + czarny tekst) ---- */
+  @media print {
+    @page { size: A4; margin: 10mm; }
+
+    /* Usuń WSZYSTKIE tła, cienie i kolory - drukujemy tylko czarny tekst i cienkie linie */
+    *, *::before, *::after {
+      background: none !important;
+      background-image: none !important;
+      box-shadow: none !important;
+      color: #000 !important;
+      text-shadow: none !important;
+    }
+
+    body { font-size: 11px; }
+    .hero::before { display: none !important; }
+
+    /* Kompaktowy nagłówek */
+    .hero { padding: 0 0 6px; }
+    .season-tag { border: none; padding: 0; margin: 0 0 4px; letter-spacing: 1px; }
+    .hero h1 { font-size: 22px; margin-bottom: 2px; }
+    .hero h1 br { display: none; }
+    .hero-sub { font-size: 9px; max-width: none; }
+
+    .sources-bar { padding: 5px 0; border-top: 1px solid #000; border-bottom: 1px solid #000; }
+    .source-pill { border: 1px solid #000; padding: 0 5px; }
+
+    .main { max-width: none; padding: 8px 0 0; }
+
+    .section-title { margin: 12px 0 6px; font-size: 11px; letter-spacing: 2px; }
+    .section-title::after { background: #000 !important; opacity: 1; }
+    .section-intro { border-left: 2px solid #000; padding: 4px 8px; margin: 0 0 8px; font-size: 9px; }
+
+    /* Karta przepisu: tylko kontur, zwarta, nie łamać między stronami (~2 na stronę) */
+    .recipe, .recipe.work {
+      border: 1px solid #000; border-radius: 0; margin-bottom: 10px;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .recipe:hover { transform: none; }
+    .recipe-header { padding: 6px 10px; border-bottom: 1px solid #000; gap: 8px; }
+    .recipe-meta { gap: 4px; margin-bottom: 3px; }
+    .tag { border: 1px solid #000; border-radius: 0; padding: 1px 5px; font-size: 8px; letter-spacing: 0.5px; }
+    .recipe-title { font-size: 14px; }
+    .recipe-desc { font-size: 9px; margin-top: 2px; line-height: 1.3; }
+
+    .macro-box { border: 1px solid #000; border-radius: 0; padding: 4px 8px; min-width: 78px; gap: 2px; }
+    .macro-kcal { font-size: 15px; }
+    .macro-kcal span { font-size: 8px; }
+    .macro-item { font-size: 8px; }
+    .macro-item strong { font-size: 10px; }
+
+    .ingredients-col, .steps-col { padding: 6px 10px; }
+    .ingredients-col { border-right: 1px solid #000; }
+    .col-title { margin-bottom: 6px; font-size: 9px; }
+    .ing-list li { font-size: 11px; padding: 2px 0; border-bottom: 1px dotted #bbb; line-height: 1.25; }
+    .ing-amount { font-size: 10px; }
+    .steps-list li { font-size: 11px; padding: 2px 0 2px 18px; line-height: 1.3; border-bottom: 1px dotted #bbb; }
+    .steps-list li::before {
+      border: 1px solid #000; width: 13px; height: 13px; font-size: 7px; top: 3px;
+    }
+
+    .recipe-footer { padding: 4px 10px; border-top: 1px solid #000; gap: 8px; }
+    .tip { font-size: 8px; }
+    .buy-hint { border: 1px solid #000; border-radius: 0; padding: 1px 5px; font-size: 8px; }
+
+    .notes-box { border: 1px solid #000; border-radius: 0; padding: 8px 10px; margin-top: 10px; break-inside: avoid; }
+    .notes-box h2 { font-size: 14px; margin-bottom: 6px; }
+    .note-item { font-size: 9px; line-height: 1.3; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="season-tag"><span aria-hidden="true">🌿</span> Czerwiec 2026 - Wrocław - Redukcja</p>
+    <h1>Strączkowe<br><em>na redukcję</em></h1>
+    <p class="hero-sub">Dużo białka, mało węgli, zero głodzenia. Sekcja "do pracy" - dania które odgrzewają się bez utraty jakości i nadają się do pojemnika. Wszystkie składniki w Biedronce, Kauflandzie lub Hali Targowej.</p>
+  </div>
+</header>
+
+<div class="sources-bar">
+  <div class="sources-inner">
+    <span class="sources-label">Gdzie kupić</span>
+    <span class="source-pill">Biedronka</span>
+    <span class="source-pill">Kaufland</span>
+    <span class="source-pill">Lidl</span>
+    <span class="source-pill">Hala Targowa Wrocław</span>
+    <span class="source-pill">Allegro (suche)</span>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- ==================== DO PRACY ==================== -->
+  <section>
+    <h2 class="section-title work-section"><span aria-hidden="true">🧳</span> Do pracy - dobre na drugi dzień</h2>
+    <p class="section-intro">Wszystkie poniższe dania można przygotować wieczorem i zabrać następnego dnia. Odgrzewają się dobrze lub smakują na zimno.</p>
+
+    <!-- W1 -->
+    <article class="recipe work">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Soczewica zielona</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 30 min</span>
+            <span class="tag tag-work"><span aria-hidden="true">🧳</span> Do pracy</span>
+          </div>
+          <h3 class="recipe-title">Soczewica z jajkiem na twardo, jogurtem i ogórkiem</h3>
+          <p class="recipe-desc">Wersja meal-prep R1 - jajko na twardo zamiast w koszulce, jogurt w osobnym pojemniku. Smakuje dobrze na zimno, ogórek dokrajasz rano.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">370<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>30g</strong>białko</div>
+            <div class="macro-item"><strong>28g</strong>węgle</div>
+            <div class="macro-item"><strong>12g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (1 porcja)</h4>
+          <ul class="ing-list">
+            <li>Soczewica zielona sucha <span class="ing-amount">80g</span></li>
+            <li>Jajka <span class="ing-amount">2 szt.</span></li>
+            <li>Jogurt grecki 0% <span class="ing-amount">100g</span></li>
+            <li>Ogórek świeży <span class="ing-amount">1/2 szt.</span></li>
+            <li>Czosnek <span class="ing-amount">2 ząbki</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżeczka</span></li>
+            <li>Papryka wędzona, sól, pieprz <span class="ing-amount">do smaku</span></li>
+            <li>Natka pietruszki <span class="ing-amount">garść</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Ugotuj soczewicę 20-25 min. Odcedź, wystudź. Wymieszaj z oliwą, czosnkiem, papryką wędzoną, solą i pieprzem.</li>
+            <li>Jajka gotuj 10 min od zagotowania - twarde. Wystudź w zimnej wodzie, obierz.</li>
+            <li>Zapakuj do pojemnika: soczewica na dole, jajka w połówkach, natka.</li>
+            <li>Jogurt grecki w osobnym małym pojemniku. Ogórek pokrój dopiero rano - puści wodę przez noc.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Soczewica na zimno wchłania przyprawy mocniej - możesz dać trochę mniej czosnku niż zwykle.</p>
+        <span class="buy-hint">Allegro 1kg ~8 zł</span>
+      </div>
+    </article>
+
+    <!-- W2 -->
+    <article class="recipe work">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Soczewica czerwona</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 25 min</span>
+            <span class="tag tag-work"><span aria-hidden="true">🧳</span> Do pracy</span>
+          </div>
+          <h3 class="recipe-title">Sos soczewicowy z warzywami - do pojemnika</h3>
+          <p class="recipe-desc">Gęsty sos bolognese ze soczewicy. Na drugi dzień jeszcze lepszy - soczewica wchłania resztę sosu przez noc. Bez cukinii - ta nie odgrzewa się dobrze, zostaje wodnista.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">290<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>20g</strong>białko</div>
+            <div class="macro-item"><strong>34g</strong>węgle</div>
+            <div class="macro-item"><strong>5g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (2 porcje)</h4>
+          <ul class="ing-list">
+            <li>Soczewica czerwona sucha <span class="ing-amount">120g</span></li>
+            <li>Passata pomidorowa <span class="ing-amount">300 ml</span></li>
+            <li>Cebula <span class="ing-amount">1 szt.</span></li>
+            <li>Czosnek <span class="ing-amount">3 ząbki</span></li>
+            <li>Marchew starta <span class="ing-amount">1 szt.</span></li>
+            <li>Papryka czerwona <span class="ing-amount">1 szt.</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżka</span></li>
+            <li>Oregano, sól, pieprz <span class="ing-amount">do smaku</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Zetrzyj marchew. Zeszklij cebulę na oliwie 5 min, dodaj marchew, paprykę, czosnek i oregano.</li>
+            <li>Wsyp soczewicę, zalej passatą i 200 ml wody. Gotuj 15 min - soczewica się rozpadnie i zgęstnieje.</li>
+            <li>Dopraw, wystudź, przełóż do pojemnika.</li>
+            <li>Odgrzej w mikrofalówce 2-3 min w pracy. Zjadaj sam lub z garścią rukoli z boku.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Nie pakuj cukinii do wersji na drugi dzień - odgrzana jest wodnista i traci teksturę. Zostaw sam sos.</p>
+        <span class="buy-hint">Passata Biedronka ~3 zł</span>
+      </div>
+    </article>
+
+    <!-- W3 -->
+    <article class="recipe work">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Ciecierzyca</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 15 min</span>
+            <span class="tag tag-work"><span aria-hidden="true">🧳</span> Do pracy</span>
+          </div>
+          <h3 class="recipe-title">Ciecierzyca z papryką i szpinakiem</h3>
+          <p class="recipe-desc">Jedna patelnia, 15 minut. Odgrzewa się świetnie - ciecierzyca nie traci struktury. Na zimno też jest dobra, szczególnie z jogurtem greckim jako dressingiem.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">360<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>28g</strong>białko</div>
+            <div class="macro-item"><strong>30g</strong>węgle</div>
+            <div class="macro-item"><strong>13g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (1 porcja)</h4>
+          <ul class="ing-list">
+            <li>Ciecierzyca z puszki <span class="ing-amount">200g</span></li>
+            <li>Papryka czerwona <span class="ing-amount">1 szt.</span></li>
+            <li>Szpinak świeży <span class="ing-amount">100g</span></li>
+            <li>Czosnek <span class="ing-amount">2 ząbki</span></li>
+            <li>Passata pomidorowa <span class="ing-amount">100 ml</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżeczka</span></li>
+            <li>Papryka wędzona, kminek <span class="ing-amount">do smaku</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Rozgrzej oliwę, wrzuć pokrojoną paprykę i czosnek. Smaż 3 min.</li>
+            <li>Dodaj ciecierzycę, passatę i przyprawy. Mieszaj 4 min.</li>
+            <li>Wrzuć szpinak, mieszaj aż zwiędnie - 2 min. Dopraw.</li>
+            <li>Wystudź, przełóż do pojemnika. Odgrzej lub jedz na zimno z łyżką jogurtu greckiego.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Puszka ciecierzycy Biedronka ~2 zł. Bez jajek w tej wersji - do pojemnika pakujesz samo warzywo z ciecierzycą.</p>
+        <span class="buy-hint">Puszka Biedronka ~2 zł</span>
+      </div>
+    </article>
+
+    <!-- W4 -->
+    <article class="recipe work">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Mięso</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 15 min</span>
+            <span class="tag tag-work"><span aria-hidden="true">🧳</span> Do pracy</span>
+          </div>
+          <h3 class="recipe-title">Mielony indyk z cukinią i papryką</h3>
+          <p class="recipe-desc">Najtańsze chude mięso, jedna patelnia, 15 minut. Odgrzewa się bez problemu - indyk nie wysycha tak jak pierś. Na drugi dzień smaki się przegryzają, jest lepszy.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">350<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>40g</strong>białko</div>
+            <div class="macro-item"><strong>12g</strong>węgle</div>
+            <div class="macro-item"><strong>14g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (2 porcje)</h4>
+          <ul class="ing-list">
+            <li>Mielony indyk <span class="ing-amount">400g</span></li>
+            <li>Cukinia <span class="ing-amount">1 duża</span></li>
+            <li>Papryka czerwona <span class="ing-amount">1 szt.</span></li>
+            <li>Czosnek <span class="ing-amount">3 ząbki</span></li>
+            <li>Passata pomidorowa <span class="ing-amount">150 ml</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżeczka</span></li>
+            <li>Papryka wędzona, oregano, sól, pieprz <span class="ing-amount">do smaku</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Rozgrzej patelnię z oliwą. Wrzuć indyk, rozbijaj łyżką, smaż 5-6 min.</li>
+            <li>Dodaj paprykę i czosnek. Smaż 3 min.</li>
+            <li>Wrzuć cukinię w półplasterkach, wlej passatę. Dopraw.</li>
+            <li>Smaż 4-5 min mieszając. Wystudź, przełóż do pojemnika - odgrzej w mikrofalówce 2-3 min.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Nie dodawaj wody - cukinia puści własną podczas smażenia, sos sam się zrobi.</p>
+        <span class="buy-hint">Biedronka / Kaufland ~14 zł / 400g</span>
+      </div>
+    </article>
+
+    <!-- W5 -->
+    <article class="recipe work">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Mięso + strączkowe</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 20 min</span>
+            <span class="tag tag-work"><span aria-hidden="true">🧳</span> Do pracy</span>
+          </div>
+          <h3 class="recipe-title">Mielony indyk z ciecierzycą i pomidorami</h3>
+          <p class="recipe-desc">Podwójne białko - mielony indyk i ciecierzyca. Gęste, sycące, odgrzewa się świetnie. Na drugi dzień ciecierzyca wchłania sos i jest jeszcze smaczniejsza.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">390<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>44g</strong>białko</div>
+            <div class="macro-item"><strong>22g</strong>węgle</div>
+            <div class="macro-item"><strong>13g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (2 porcje)</h4>
+          <ul class="ing-list">
+            <li>Mielony indyk <span class="ing-amount">300g</span></li>
+            <li>Ciecierzyca z puszki <span class="ing-amount">240g</span></li>
+            <li>Pomidory krojone z puszki <span class="ing-amount">400g</span></li>
+            <li>Cebula <span class="ing-amount">1 szt.</span></li>
+            <li>Czosnek <span class="ing-amount">3 ząbki</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżeczka</span></li>
+            <li>Kminek, papryka wędzona, sól, pieprz <span class="ing-amount">do smaku</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Zeszklij cebulę na oliwie 4 min. Dodaj czosnek i przyprawy, smaż 30 sekund.</li>
+            <li>Wrzuć mielony indyk, rozbijaj łyżką, smaż 5-6 min aż straci różowy kolor.</li>
+            <li>Dodaj odsączoną ciecierzycę i pomidory z puszki. Gotuj razem 8 min na średnim ogniu.</li>
+            <li>Dopraw, wystudź. Przełóż do pojemnika - odgrzej lub jedz na zimno z garścią sałaty.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Najwyższe białko ze wszystkich przepisów w tym zbiorze - 44g na porcję. Idealne jeśli masz trening po pracy.</p>
+        <span class="buy-hint">Biedronka / Kaufland</span>
+      </div>
+    </article>
+
+    <!-- W6 -->
+    <article class="recipe work">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Kasza + mięso</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 25 min</span>
+            <span class="tag tag-work"><span aria-hidden="true">🧳</span> Do pracy</span>
+          </div>
+          <h3 class="recipe-title">Kasza gryczana z kurczakiem i warzywami - one pan</h3>
+          <p class="recipe-desc">Kasza prażona wrzucona bezpośrednio na patelnię z kurczakiem i bulionem - gotuje się razem, wchłania smaki. Na drugi dzień lepsza niż świeża, kasza się przegryza.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">400<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>38g</strong>białko</div>
+            <div class="macro-item"><strong>36g</strong>węgle</div>
+            <div class="macro-item"><strong>9g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (2 porcje)</h4>
+          <ul class="ing-list">
+            <li>Pierś z kurczaka pokrojona w kostkę <span class="ing-amount">300g</span></li>
+            <li>Kasza gryczana prażona <span class="ing-amount">150g</span></li>
+            <li>Bulion warzywny <span class="ing-amount">350 ml</span></li>
+            <li>Marchew <span class="ing-amount">1 szt.</span></li>
+            <li>Cebula <span class="ing-amount">1 szt.</span></li>
+            <li>Czosnek <span class="ing-amount">2 ząbki</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżeczka</span></li>
+            <li>Tymianek, sól, pieprz <span class="ing-amount">do smaku</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Podsmaż kurczaka na oliwie 4-5 min z każdej strony. Wyjmij z patelni, odłóż.</li>
+            <li>Na tej samej patelni zeszklij cebulę i marchew pokrojoną w kostkę, 4 min. Dodaj czosnek.</li>
+            <li>Wsyp suchą kaszę, mieszaj 1 min. Wlej gorący bulion, wróć kurczaka do patelni.</li>
+            <li>Przykryj pokrywką, gotuj na małym ogniu 15 min aż kasza wchłonie cały bulion. Dopraw.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Kasza gryczana prażona (ciemna) - nie wymaga płukania, wsypujesz suchą. Białą niestety trzeba płukać i gotować osobno.</p>
+        <span class="buy-hint">Kasza gryczana Biedronka ~3 zł</span>
+      </div>
+    </article>
+
+    <!-- W7 -->
+    <article class="recipe work">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Soczewica czerwona</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 25 min</span>
+            <span class="tag tag-work"><span aria-hidden="true">🧳</span> Do pracy</span>
+          </div>
+          <h3 class="recipe-title">Zupa z soczewicy z imbirem</h3>
+          <p class="recipe-desc">Kremowa zupa bez mleczka kokosowego - bulion i jogurt grecki zamiast. Trzyma się w lodówce 3 dni. Do pracy w termosie lub odgrzana w mikrofalówce.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">270<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>20g</strong>białko</div>
+            <div class="macro-item"><strong>34g</strong>węgle</div>
+            <div class="macro-item"><strong>4g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (3 porcje)</h4>
+          <ul class="ing-list">
+            <li>Soczewica czerwona sucha <span class="ing-amount">200g</span></li>
+            <li>Marchew <span class="ing-amount">2 szt.</span></li>
+            <li>Cebula <span class="ing-amount">1 szt.</span></li>
+            <li>Imbir świeży <span class="ing-amount">3 cm</span></li>
+            <li>Bulion warzywny <span class="ing-amount">1 litr</span></li>
+            <li>Jogurt grecki 0% <span class="ing-amount">3 łyżki</span></li>
+            <li>Kurkuma, curry, czosnek <span class="ing-amount">do smaku</span></li>
+            <li>Natka lub kolendra <span class="ing-amount">garść</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Zeszklij cebulę z imbirem i marchewką, 5 min. Dodaj przyprawy, mieszaj 30 sekund.</li>
+            <li>Wsyp opłukaną soczewicę, zalej bulionem. Gotuj 15 min.</li>
+            <li>Zblenduj. Dopraw solą. Podziel na porcje.</li>
+            <li>Do każdej porcji przy podaniu dodaj łyżkę zimnego jogurtu greckiego. Jogurtu nie mieszaj z zupą przed schłodzeniem.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Do termosa lej gorącą, bez jogurtu - jogurt dodajesz osobno w pracy. Zupa trzyma się 3 dni w lodówce.</p>
+        <span class="buy-hint">Allegro 1kg soczewicy ~8 zł</span>
+      </div>
+    </article>
+  </section>
+
+  <!-- ==================== NA ŚWIEŻO ==================== -->
+  <section>
+    <h2 class="section-title"><span aria-hidden="true">🍳</span> Na świeżo - tylko tego samego dnia</h2>
+
+    <!-- F1 -->
+    <article class="recipe">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Soczewica zielona</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 30 min</span>
+            <span class="tag tag-vibe">Lunch / kolacja</span>
+          </div>
+          <h3 class="recipe-title">Soczewica z jajkiem w koszulce i jogurtem greckim</h3>
+          <p class="recipe-desc">Dużo białka z trzech źródeł - soczewica, jajko, jogurt. Płynne żółtko i zimny jogurt robią wilgotność bez zbędnego tłuszczu. Tylko na świeżo - jajko w koszulce nie nadaje się do odgrzewania.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">380<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>32g</strong>białko</div>
+            <div class="macro-item"><strong>28g</strong>węgle</div>
+            <div class="macro-item"><strong>12g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (1 porcja)</h4>
+          <ul class="ing-list">
+            <li>Soczewica zielona sucha <span class="ing-amount">80g</span></li>
+            <li>Jajka <span class="ing-amount">2 szt.</span></li>
+            <li>Jogurt grecki 0% <span class="ing-amount">100g</span></li>
+            <li>Czosnek <span class="ing-amount">2 ząbki</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżeczka</span></li>
+            <li>Papryka wędzona, chili <span class="ing-amount">szczypta</span></li>
+            <li>Natka pietruszki <span class="ing-amount">garść</span></li>
+            <li>Ocet do koszulkowania <span class="ing-amount">1 łyżka</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Ugotuj soczewicę 20-25 min. Odcedź, wymieszaj z oliwą, czosnkiem, solą i pieprzem.</li>
+            <li>Jajka w koszulce: wrzątek z łyżką octu, zrób wir, wbij jajko z miseczki. 3 minuty, wyłów łyżką cedzakową.</li>
+            <li>Wyłóż soczewicę na talerz, połóż jajka.</li>
+            <li>Obok daj jogurt grecki, posyp papryką wędzoną i natką. Przebij żółtko przy jedzeniu.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Jogurt grecki 0% (Lidl Milbona) - tyle samo białka co tłusty, połowa kalorii.</p>
+        <span class="buy-hint">Lidl / Biedronka</span>
+      </div>
+    </article>
+
+    <!-- F2 -->
+    <article class="recipe">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Bób świeży</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 15 min</span>
+            <span class="tag tag-vibe">Sałatka / lunch</span>
+          </div>
+          <h3 class="recipe-title">Bób z miętą, rzodkiewką i twarożkiem</h3>
+          <p class="recipe-desc">Szczyt sezonu na bób - czerwiec. Twarożek zamiast fety: więcej białka, mniej tłuszczu. Lekka sałatka na upały - tylko na świeżo, bób po dobie w lodówce traci smak.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">290<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>24g</strong>białko</div>
+            <div class="macro-item"><strong>26g</strong>węgle</div>
+            <div class="macro-item"><strong>8g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (2 porcje)</h4>
+          <ul class="ing-list">
+            <li>Bób świeży łuskany <span class="ing-amount">400g</span></li>
+            <li>Twarożek chudy <span class="ing-amount">150g</span></li>
+            <li>Rzodkiewki <span class="ing-amount">8 szt.</span></li>
+            <li>Mięta świeża <span class="ing-amount">duża garść</span></li>
+            <li>Cytryna <span class="ing-amount">1 szt.</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżeczka</span></li>
+            <li>Sól, pieprz gruby <span class="ing-amount">do smaku</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Bób gotuj w osolonej wodzie 5-7 min. Odcedź, przelej zimną wodą.</li>
+            <li>Obierz ze skórki - naciśnij palcem, wyskoczy jasna pestka.</li>
+            <li>Wymieszaj bób z sokiem z cytryny, oliwą, solą i pieprzem.</li>
+            <li>Wyłóż na talerz, rozłóż twarożek, dodaj rzodkiewki i miętę.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Twarożek chudy ma tyle samo białka co feta, ale 3x mniej kalorii i tłuszczu.</p>
+        <span class="buy-hint">Hala Targowa Wrocław</span>
+      </div>
+    </article>
+
+    <!-- F3 -->
+    <article class="recipe">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Jajka</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 10 min</span>
+            <span class="tag tag-vibe">Śniadanie / kolacja</span>
+          </div>
+          <h3 class="recipe-title">Scrambled eggs z twarożkiem i szpinakiem</h3>
+          <p class="recipe-desc">Twarożek wmieszany do jajek robi kremową masę bez masła. Tylko na świeżo - odgrzane scrambled eggs są gumowe i suche, tracą całą kremowość.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">320<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>34g</strong>białko</div>
+            <div class="macro-item"><strong>6g</strong>węgle</div>
+            <div class="macro-item"><strong>18g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (1 porcja)</h4>
+          <ul class="ing-list">
+            <li>Jajka <span class="ing-amount">4 szt.</span></li>
+            <li>Twarożek chudy <span class="ing-amount">100g</span></li>
+            <li>Szpinak świeży <span class="ing-amount">80g</span></li>
+            <li>Czosnek <span class="ing-amount">1 ząbek</span></li>
+            <li>Spray do smażenia lub oliwa <span class="ing-amount">minimalna ilość</span></li>
+            <li>Sól, pieprz, chili <span class="ing-amount">do smaku</span></li>
+            <li>Szczypiorek lub natka <span class="ing-amount">garść</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Roztrzep jajka w misce, wmieszaj twarożek widelcem.</li>
+            <li>Rozgrzej patelnię na średnim ogniu, lekko natłuść. Wrzuć czosnek i szpinak, smaż 1-2 min.</li>
+            <li>Wlej masę jajeczno-twarożkową. Mieszaj powoli co kilka sekund - jajka mają tworzyć duże płaty.</li>
+            <li>Zdejmij z ognia kiedy jeszcze lekko wilgotne. Posyp szczypiorkiem i pieprzem.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Średni ogień, wolne ruchy łyżką, zdejmij chwilę przed gotowym - inaczej wychodzi sucha gumowa masa.</p>
+        <span class="buy-hint">Twarożek Piątnica Biedronka ~4 zł</span>
+      </div>
+    </article>
+
+    <!-- F4 -->
+    <article class="recipe">
+      <div class="recipe-header">
+        <div>
+          <div class="recipe-meta">
+            <span class="tag tag-legume">Mięso</span>
+            <span class="tag tag-time"><span aria-hidden="true">⏱</span> 20 min</span>
+            <span class="tag tag-vibe">Obiad / kolacja</span>
+          </div>
+          <h3 class="recipe-title">Pierś z kurczaka z musztardą i szpinakiem</h3>
+          <p class="recipe-desc">Sos musztardowy z jogurtem greckim zamiast śmietany. Najlepiej na świeżo - sos z jogurtu przy odgrzewaniu może się rozwarstwiać.</p>
+        </div>
+        <div class="macro-box">
+          <p class="macro-kcal">320<span>kcal / porcja</span></p>
+          <div class="macro-row">
+            <div class="macro-item"><strong>42g</strong>białko</div>
+            <div class="macro-item"><strong>6g</strong>węgle</div>
+            <div class="macro-item"><strong>12g</strong>tłuszcz</div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-col">
+          <h4 class="col-title">Składniki (1 porcja)</h4>
+          <ul class="ing-list">
+            <li>Pierś z kurczaka <span class="ing-amount">200g</span></li>
+            <li>Jogurt grecki 0% <span class="ing-amount">100g</span></li>
+            <li>Musztarda dijon <span class="ing-amount">2 łyżeczki</span></li>
+            <li>Szpinak świeży <span class="ing-amount">100g</span></li>
+            <li>Czosnek <span class="ing-amount">2 ząbki</span></li>
+            <li>Oliwa <span class="ing-amount">1 łyżeczka</span></li>
+            <li>Sól, pieprz, tymianek <span class="ing-amount">do smaku</span></li>
+          </ul>
+        </div>
+        <div class="steps-col">
+          <h4 class="col-title">Przygotowanie</h4>
+          <ol class="steps-list">
+            <li>Pierś rozbij tłuczkiem do ok. 1,5 cm. Dopraw solą, pieprzem i tymiankiem.</li>
+            <li>Smaż 4-5 min z każdej strony. Odłóż na talerz, przykryj folią.</li>
+            <li>Na tej samej patelni zeszklij czosnek, wrzuć szpinak - mieszaj aż zwiędnie.</li>
+            <li>Zmniejsz ogień do minimum, dodaj jogurt i musztardę, mieszaj 1 min. Wróć kurczaka, polej sosem.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="recipe-footer">
+        <p class="tip"><strong>Tip:</strong> Jogurt dodajesz przy minimalnym ogniu - przy zbyt wysokiej temperaturze się zwarzy.</p>
+        <span class="buy-hint">Pierś kurczaka Kaufland ~12 zł/kg</span>
+      </div>
+    </article>
+  </section>
+
+  <!-- NOTES -->
+  <section class="notes-box">
+    <h2>Zasady przy redukcji</h2>
+    <div class="notes-grid">
+      <div class="note-item">
+        <strong>Co wyrzucić</strong>
+        Ryż, makaron i pieczywo obok dania podwajają kaloryczność. Zamień na warzywa - cukinia, szpinak, sałata, rukola. W czerwcu tanie i sezonowe.
+      </div>
+      <div class="note-item">
+        <strong>Czym zastąpić tłuste dodatki</strong>
+        Mleczko kokosowe - bulion + jogurt grecki 0%. Feta - twarożek chudy. Śmietana - jogurt grecki 0%. Duże ilości oliwy - 1 łyżeczka wystarczy.
+      </div>
+      <div class="note-item">
+        <strong>Sezonowe teraz</strong>
+        Bób, cukinia, rzodkiewka, szpinak, papryka - szczyt czerwca. Hala Targowa przy ul. Piaskowej lub targi przy Galerii Dominikańskiej.
+      </div>
+      <div class="note-item">
+        <strong>Białko ze strączków</strong>
+        Soczewica i ciecierzyca mają 18-25g białka na 100g suchej masy. W połączeniu z jajkiem lub mięsem - kompletne aminokwasy i bardzo wysoka sytość.
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
