@@ -161,73 +161,79 @@
     .recipe:hover { transform: none; }
   }
 
-  /* ---- Wydruk: oszczędny na tusz (zero teł, same kontury + czarny tekst) ---- */
+  /* ---- Wydruk: elegancko i oszczędnie (zero teł, miękkie linie, czytelna czcionka) ---- */
   @media print {
-    @page { size: A4; margin: 10mm; }
+    @page { size: A4; margin: 11mm; }
 
-    /* Usuń WSZYSTKIE tła, cienie i kolory - drukujemy tylko czarny tekst i cienkie linie */
+    /* Usuń WSZYSTKIE tła i cienie - bez wypełnień zużycie tuszu zostaje minimalne */
     *, *::before, *::after {
       background: none !important;
       background-image: none !important;
       box-shadow: none !important;
-      color: #000 !important;
       text-shadow: none !important;
     }
+    * { color: #2b2b2b !important; }
 
-    body { font-size: 11px; }
+    body { font-size: 12px; line-height: 1.45; }
     .hero::before { display: none !important; }
 
-    /* Kompaktowy nagłówek */
-    .hero { padding: 0 0 6px; }
-    .season-tag { border: none; padding: 0; margin: 0 0 4px; letter-spacing: 1px; }
-    .hero h1 { font-size: 22px; margin-bottom: 2px; }
+    /* Nagłówek */
+    .hero { padding: 0 0 10px; }
+    .season-tag { border: none; padding: 0; margin: 0 0 6px; letter-spacing: 2px; font-size: 10px; color: #8a8270 !important; }
+    .hero h1 { font-size: 30px; margin-bottom: 4px; }
     .hero h1 br { display: none; }
-    .hero-sub { font-size: 9px; max-width: none; }
+    .hero h1 em { font-style: italic; color: #5c7a5c !important; }
+    .hero-sub { font-size: 11px; max-width: none; line-height: 1.5; color: #555 !important; }
 
-    .sources-bar { padding: 5px 0; border-top: 1px solid #000; border-bottom: 1px solid #000; }
-    .source-pill { border: 1px solid #000; padding: 0 5px; }
+    .sources-bar { padding: 8px 0; border-top: 1px solid #e0d9ca; border-bottom: 1px solid #e0d9ca; }
+    .sources-label { color: #8a8270 !important; }
+    .source-pill { border: 1px solid #ddd5c4; border-radius: 12px; padding: 2px 10px; }
 
-    .main { max-width: none; padding: 8px 0 0; }
+    .main { max-width: none; padding: 14px 0 0; }
 
-    .section-title { margin: 12px 0 6px; font-size: 11px; letter-spacing: 2px; }
-    .section-title::after { background: #000 !important; opacity: 1; }
-    .section-intro { border-left: 2px solid #000; padding: 4px 8px; margin: 0 0 8px; font-size: 9px; }
+    .section-title { margin: 14px 0 10px; font-size: 13px; letter-spacing: 3px; color: #6a7a5c !important; }
+    .section-title::after { background: #e0d9ca !important; opacity: 1; }
+    .section-intro { border-left: 3px solid #cdd6c6; padding: 6px 12px; margin: 0 0 14px; font-size: 11px; color: #555 !important; }
 
-    /* Karta przepisu: tylko kontur, zwarta, nie łamać między stronami (~2 na stronę) */
+    /* Karta przepisu: delikatny kontur, zaokrąglona, nie łamać między stronami */
     .recipe, .recipe.work {
-      border: 1px solid #000; border-radius: 0; margin-bottom: 10px;
+      border: 1px solid #e0d9ca; border-radius: 10px; margin-bottom: 11px;
       break-inside: avoid; page-break-inside: avoid;
     }
+    .recipe.work { border-left: 3px solid #c4cbd6; }
     .recipe:hover { transform: none; }
-    .recipe-header { padding: 6px 10px; border-bottom: 1px solid #000; gap: 8px; }
-    .recipe-meta { gap: 4px; margin-bottom: 3px; }
-    .tag { border: 1px solid #000; border-radius: 0; padding: 1px 5px; font-size: 8px; letter-spacing: 0.5px; }
-    .recipe-title { font-size: 14px; }
-    .recipe-desc { font-size: 9px; margin-top: 2px; line-height: 1.3; }
 
-    .macro-box { border: 1px solid #000; border-radius: 0; padding: 4px 8px; min-width: 78px; gap: 2px; }
-    .macro-kcal { font-size: 15px; }
-    .macro-kcal span { font-size: 8px; }
-    .macro-item { font-size: 8px; }
-    .macro-item strong { font-size: 10px; }
+    .recipe-header { padding: 10px 18px; border-bottom: 1px solid #ece4d4; gap: 16px; }
+    .recipe-meta { gap: 6px; margin-bottom: 6px; }
+    .tag { border: 1px solid #ddd5c4; border-radius: 6px; padding: 2px 8px; font-size: 9px; letter-spacing: 1px; color: #7a7363 !important; }
+    .recipe-title { font-size: 18px; color: #1a3a2a !important; }
+    .recipe-desc { font-size: 11px; margin-top: 4px; line-height: 1.45; color: #555 !important; }
 
-    .ingredients-col, .steps-col { padding: 6px 10px; }
-    .ingredients-col { border-right: 1px solid #000; }
-    .col-title { margin-bottom: 6px; font-size: 9px; }
-    .ing-list li { font-size: 11px; padding: 2px 0; border-bottom: 1px dotted #bbb; line-height: 1.25; }
-    .ing-amount { font-size: 10px; }
-    .steps-list li { font-size: 11px; padding: 2px 0 2px 18px; line-height: 1.3; border-bottom: 1px dotted #bbb; }
+    .macro-box { border: 1px solid #d7d0bf; border-radius: 8px; padding: 8px 14px; min-width: 94px; gap: 4px; }
+    .macro-kcal { font-size: 21px; color: #1a3a2a !important; }
+    .macro-kcal span { font-size: 9px; color: #888 !important; }
+    .macro-item { font-size: 9px; color: #888 !important; }
+    .macro-item strong { font-size: 12px; color: #2b2b2b !important; }
+
+    .ingredients-col, .steps-col { padding: 10px 18px; }
+    .ingredients-col { border-right: 1px solid #ece4d4; }
+    .col-title { margin-bottom: 10px; font-size: 10px; letter-spacing: 1.5px; color: #6a7a5c !important; }
+    .ing-list li { font-size: 12px; padding: 4px 0; border-bottom: 1px dotted #e6dfcf; line-height: 1.35; }
+    .ing-amount { font-size: 11px; color: #a87c43 !important; }
+    .steps-list li { font-size: 12px; padding: 5px 0 5px 26px; line-height: 1.45; border-bottom: 1px dotted #e6dfcf; }
     .steps-list li::before {
-      border: 1px solid #000; width: 13px; height: 13px; font-size: 7px; top: 3px;
+      border: 1px solid #9aaa90; color: #5c7a5c !important; width: 17px; height: 17px; font-size: 9px; top: 5px;
     }
 
-    .recipe-footer { padding: 4px 10px; border-top: 1px solid #000; gap: 8px; }
-    .tip { font-size: 8px; }
-    .buy-hint { border: 1px solid #000; border-radius: 0; padding: 1px 5px; font-size: 8px; }
+    .recipe-footer { padding: 8px 18px; border-top: 1px solid #ece4d4; gap: 16px; }
+    .tip { font-size: 10px; color: #666 !important; }
+    .tip strong { color: #a87c43 !important; }
+    .buy-hint { border: 1px solid #ddd5c4; border-radius: 6px; padding: 2px 8px; font-size: 9px; color: #6a7a5c !important; }
 
-    .notes-box { border: 1px solid #000; border-radius: 0; padding: 8px 10px; margin-top: 10px; break-inside: avoid; }
-    .notes-box h2 { font-size: 14px; margin-bottom: 6px; }
-    .note-item { font-size: 9px; line-height: 1.3; }
+    .notes-box { border: 1px solid #d7d0bf; border-radius: 10px; padding: 14px 18px; margin-top: 11px; break-inside: avoid; }
+    .notes-box h2 { font-size: 18px; margin-bottom: 10px; color: #1a3a2a !important; }
+    .note-item { font-size: 11px; line-height: 1.45; }
+    .note-item strong { color: #6a7a5c !important; letter-spacing: 1px; }
   }
 </style>
 </head>
@@ -236,7 +242,7 @@
 <header class="hero">
   <div class="hero-inner">
     <p class="season-tag"><span aria-hidden="true">🌿</span> Czerwiec 2026 - Wrocław - Redukcja</p>
-    <h1>Strączkowe<br><em>na redukcję</em></h1>
+    <h1>Strączkowe <br><em>na redukcję</em></h1>
     <p class="hero-sub">Dużo białka, mało węgli, zero głodzenia. Sekcja "do pracy" - dania które odgrzewają się bez utraty jakości i nadają się do pojemnika. Wszystkie składniki w Biedronce, Kauflandzie lub Hali Targowej.</p>
   </div>
 </header>
